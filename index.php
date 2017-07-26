@@ -6,18 +6,33 @@
     <title>Moja prvá PHP stránka</title>
   </head>
   <body>
+
+    <!-- Základná navigácia -->
+
     <nav>
       <ul>
-        <li><a href="home.php">Domov</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="index.php">Domov</a></li>
+        <li><a href="index.php?page=kontakt">Kontakt</a></li>
+        <li><a href="index.php?page=blog">Blog</a></li>
       </ul>
     </nav>
 
-    <?php
+    <!-- END Základná navigácia -->
 
-      echo var_dump($_GET);
+
+    <?php
+      $page = !isset($_GET['page']) ? 'index.php' : $_GET['page'] . '.php';
+      // echo $subpage;
+      // echo "V premennej page je teraz $page.";
+      if ($page != "index.php") {
+        include $page;
+      }
 
      ?>
+
+     <div class="container">
+       Toto je hlavná stránka
+     </div>
+
   </body>
 </html>
